@@ -9,11 +9,19 @@ GPU Picking also works with skinned meshes and performs better with meshes that 
 ![Picking Example](docs/example.png)
 Note: The example loads slowly because the sphere has so many polys in it.
 
+## Install
+
+Two Options:
+
+A) Install with npm, `npm install three_gpu_picking`
+
+B) This is a one file library, one can just copy gpupicker into their project 
+
 ## Usage
 
 ### Import the picker
 
-`import { GPUPicker } from './gpupicker.js';`
+`import { GPUPicker } from 'three_gpu_picking';`
 
 ### Create the picker with the following parameters
 

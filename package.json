@@ -1,0 +1,28 @@
+{
+  "name": "three_gpu_picking",
+  "version": "1.0.0",
+  "description": "GPU Object Picking for Three.JS",
+  "main": "gpupicker.js",
+  "directories": {
+    "doc": "docs",
+    "example": "example"
+  },
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bzztbomb/three_js_gpu_picking.git"
+  },
+  "keywords": [
+    "threejs",
+    "object",
+    "picking"
+  ],
+  "author": "Brian Richardson, Josh Faust",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/bzztbomb/three_js_gpu_picking/issues"
+  },
+  "homepage": "https://github.com/bzztbomb/three_js_gpu_picking#readme"
+}
