@@ -38,7 +38,8 @@ var GPUPicker = function(three, renderer, scene, camera) {
     camera.setViewOffset(w, h, x, y, 1, 1);
 
     var currRenderTarget = renderer.getRenderTarget();
-    var currClearColor = renderer.getClearColor();
+    var currClearColor = new THREE.Color();
+    renderer.getClearColor(currClearColor);
     renderer.setRenderTarget(pickingTarget);
     renderer.setClearColor(clearColor);
     renderer.clear();
@@ -55,7 +56,7 @@ var GPUPicker = function(three, renderer, scene, camera) {
   function renderList() {
     // This is the magic, these render lists are still filled with valid data.  So we can
     // submit them again for picking and save lots of work!
-    var renderList = renderer.renderLists.get(scene, camera);
+    var renderList = renderer.renderLists.get(scene, 0);
     renderList.opaque.forEach(item => processItem(item));
     renderList.transparent.forEach(item => processItem(item));
   }
