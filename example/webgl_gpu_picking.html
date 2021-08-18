@@ -150,10 +150,10 @@
       var geometry = new THREE.SphereGeometry(100, 500, 500, 0, Math.PI * 2, 0, Math.PI * 2);
       var material = new THREE.MeshBasicMaterial({ color: 0xff00ff });
       var sphere = new THREE.Mesh(geometry, material);
-      var sphereScene = new THREE.Scene(); // To make objectToId happy.
-      sphereScene.position.x = -200;
-      scene.add(sphereScene);
-      sphereScene.add(sphere);
+      var sphereGroup = new THREE.Group(); // To make objectToId happy.
+      sphereGroup.position.x = -200;
+      scene.add(sphereGroup);
+      sphereGroup.add(sphere);
 		}
 
     function setColor(id) {
@@ -196,7 +196,7 @@
     function idFromObject(obj) {
       var ret = obj;
       while (ret) {
-        if (ret.type === 'Scene') {
+        if (ret.type === 'Group') {
           return ret.id;
         } else {
           ret = ret.parent;
