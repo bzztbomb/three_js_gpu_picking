@@ -1,6 +1,6 @@
 {
   "name": "three_gpu_picking",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GPU Object Picking for Three.JS",
   "main": "gpupicker.js",
   "directories": {
