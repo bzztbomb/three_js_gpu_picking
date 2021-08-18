@@ -39,12 +39,12 @@ B) This is a one file library, one can just copy gpupicker into their project
 
 Call GPUPicker.pick with the following parameters:
 
-* x, the x coordinate of the location you want to pick in.  Make sure to divide by `window.devicePixelRatio`
-* y, the y coordinate of the location you want to pick in.  Make sure to divide by `window.devicePixelRatio`
+* x, the x coordinate of the location you want to pick in.  Make sure to multiply by `window.devicePixelRatio`
+* y, the y coordinate of the location you want to pick in.  Make sure to multiply by `window.devicePixelRatio`
 * shouldPickObject, optional, a callback that allows you to not consider some objects pickable.  Return false to skip an object.
 
 ```javascript
-  var objectId = picker.pick(ev.clientX / window.devicePixelRatio, ev.clientY / window.devicePixelRatio, obj => {
+  var objectId = picker.pick(ev.clientX * window.devicePixelRatio, ev.clientY * window.devicePixelRatio, obj => {
     return obj.myPickingFlag;
   });
 ```
