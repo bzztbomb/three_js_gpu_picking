@@ -49,6 +49,9 @@ Call GPUPicker.pick with the following parameters:
   });
 ```
 
+This should happen pretty much directly after `renderer.render` is called.  Depending on how complicated your render loop is, you may need to store the 
+picking coordinates of `onMouseUp` in a variable and then process the pick in your render call.  There's an example of this [here](https://github.com/bzztbomb/three_js_outline/blob/trunk/example/src/index.ts#L107)
+
 ### Custom shaders
 
 If you have an object that requires a custom material for picking (due to vertex animation or you want alpha support).  Set a `pickingMaterial` property on it and the `GPUPicker` will use it.
