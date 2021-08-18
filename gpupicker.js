@@ -83,15 +83,7 @@ var GPUPicker = function(three, renderer, scene, camera) {
       }
     }
 
-    var useSkinning = 0;
-    if (object.isSkinnedMesh === true) {
-      if (material.skinning === true) {
-        useSkinning = 1;
-      } else {
-        console.warn('THREE.SkinnedMesh with material.skinning set to false:', object);
-      }
-    }
-
+    var useSkinning = object.isSkinnedMesh ? 1 : 0;
     var useInstancing = object.isInstancedMesh === true ? 1 : 0;
     var frontSide = material.side === THREE.FrontSide ? 1 : 0;
     var backSide = material.side === THREE.BackSide ? 1 : 0;
@@ -106,8 +98,6 @@ var GPUPicker = function(three, renderer, scene, camera) {
     var renderMaterial = renderItem.object.pickingMaterial ? renderItem.object.pickingMaterial : materialCache[index];
     if (!renderMaterial) {
       renderMaterial = new THREE.ShaderMaterial({
-        skinning: useSkinning > 0,
-        morphTargets: useMorphing > 0,
         vertexShader: THREE.ShaderChunk.meshbasic_vert,
         fragmentShader: `
           uniform vec4 objectId;
@@ -117,6 +107,8 @@ var GPUPicker = function(three, renderer, scene, camera) {
         `,
         side: material.side,
       });
+      renderMaterial.skinning = useSkinning > 0,
+      renderMaterial.morphTargets = useMorphing > 0,
       renderMaterial.uniforms = {
         objectId: { value: [1.0, 1.0, 1.0, 1.0] },
       };
