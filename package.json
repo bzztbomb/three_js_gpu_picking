@@ -2,12 +2,13 @@
   "name": "three_gpu_picking",
   "version": "1.0.2",
   "description": "GPU Object Picking for Three.JS",
-  "main": "gpupicker.js",
+  "main": "src/gpupicker.js",
   "directories": {
     "doc": "docs",
     "example": "example"
   },
   "scripts": {
+    "start": "snowpack dev",
     "test": "exit 0"
   },
   "repository": {
@@ -24,5 +25,12 @@
   "bugs": {
     "url": "https://github.com/bzztbomb/three_js_gpu_picking/issues"
   },
-  "homepage": "https://github.com/bzztbomb/three_js_gpu_picking#readme"
+  "homepage": "https://github.com/bzztbomb/three_js_gpu_picking#readme",
+  "devDependencies": {
+    "snowpack": "^3.8.6",
+    "three": "^0.131.3"
+  },
+  "peerDependencies": {
+    "three": ">= 0.131"
+  }
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>webgl - gpu picking</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <style>
+		body {
+			font-family: Monospace;
+			background-color: #f0f0f0;
+			margin: 0px;
+			overflow: hidden;
+		}
+
+    #info {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      color: white;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      /* pointer-events: none; */
+      z-index: 1; /* TODO Solve this in HTML */
+    }
+
+    .dg.ac {
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      z-index: 2 !important; /* TODO Solve this in HTML */
+    }
+
+		#info a {
+			color: #00ffff;
+		}
+	</style>
+</head>
+
+<body>
+  <div id="info">
+    <a href="https://github.com/bzztbomb/three_js_gpu_picking" target="_blank">GPUPicker</a> webgl - gpu picking
+    <br /><a href="https://github.com/bzztbomb" target="_blank">by Brian Richardson (bzztbomb)</a>
+    <br />Use GUI to switch between GPU and CPU picking
+    <br />Model: <a href="https://sketchfab.com/3d-models/breakdanceanimation--0b5ac21a30e34c2f8011d57d9e017295">Dancer by 12626</a> CC Attribution License
+  </div>
+
+  <div id="container"></div>
+
+  <script type="module" src="/index.js"></script>
+</body>
+</html>
