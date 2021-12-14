@@ -116,7 +116,8 @@ function init() {
   sprite.scale.fromArray([0.3, 0.3, 0.3]);
   sprite.material.rotation = Math.PI / 4;
   sprite.material.sizeAttenuation = false;
-  sprite.position.x = -50;
+  sprite.position.x = -450;
+  sprite.position.y = -100;
   scene.add( sprite );
 }
 
