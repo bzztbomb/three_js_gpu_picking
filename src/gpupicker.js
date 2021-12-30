@@ -91,17 +91,26 @@ var GPUPicker = function(three, renderer, scene, camera) {
     var frontSide = material.side === THREE.FrontSide ? 1 : 0;
     var backSide = material.side === THREE.BackSide ? 1 : 0;
     var doubleSide = material.side === THREE.DoubleSide ? 1 : 0;
+    var sprite = material.type === 'SpriteMaterial' ? 1 : 0;
+    var sizeAttenuation = material.sizeAttenuation ? 1 : 0;
     var index =
       (useMorphing << 0) |
       (useSkinning << 1) |
       (useInstancing << 2) |
       (frontSide << 3) |
       (backSide << 4) |
-      (doubleSide << 5);
+      (doubleSide << 5) |
+      (sprite << 6) |
+      (sizeAttenuation << 7);
     var renderMaterial = renderItem.object.pickingMaterial ? renderItem.object.pickingMaterial : materialCache[index];
     if (!renderMaterial) {
+      let vertexShader = THREE.ShaderChunk.meshbasic_vert;
+      if (sprite) {
+        vertexShader = THREE.ShaderChunk.sprite_vert;
+        if (sizeAttenuation) vertexShader = '#define USE_SIZEATTENUATION\n\n' + vertexShader;
+      }
       renderMaterial = new THREE.ShaderMaterial({
-        vertexShader: THREE.ShaderChunk.meshbasic_vert,
+        vertexShader: vertexShader,
         fragmentShader: `
           uniform vec4 objectId;
           void main() {
@@ -116,6 +125,10 @@ var GPUPicker = function(three, renderer, scene, camera) {
         objectId: { value: [1.0, 1.0, 1.0, 1.0] },
       };
       materialCache[index] = renderMaterial;
+    }
+    if (sprite) {
+      renderMaterial.uniforms.rotation = { value: material.rotation }
+      renderMaterial.uniforms.center = { value: object.center }
     }
     renderMaterial.uniforms.objectId.value = [
       ( objId >> 24 & 255 ) / 255,

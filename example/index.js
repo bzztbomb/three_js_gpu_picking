@@ -99,6 +99,26 @@ function init() {
   sphereGroup.position.x = -200;
   scene.add(sphereGroup);
   sphereGroup.add(sphere);
+
+  // Sprite
+  var map = new THREE.TextureLoader().load( 'model/rollerblades.png' );
+  var spriteMaterial = new THREE.SpriteMaterial( { map: map } );
+  var sprite = window.sprite = new THREE.Sprite( spriteMaterial );
+  sprite.scale.fromArray([100, 100, 100]);
+  sprite.center.set(0, 3);
+  sprite.material.rotation = Math.PI / 4;
+  sprite.position.x = 100;
+  scene.add( sprite );
+
+  // Unattenuated sprite
+  var spriteMaterial = new THREE.SpriteMaterial( { map: map } );
+  var sprite = window.sprite = new THREE.Sprite( spriteMaterial );
+  sprite.scale.fromArray([0.3, 0.3, 0.3]);
+  sprite.material.rotation = Math.PI / 4;
+  sprite.material.sizeAttenuation = false;
+  sprite.position.x = -450;
+  sprite.position.y = -100;
+  scene.add( sprite );
 }
 
 function setColor(id) {
@@ -141,7 +161,7 @@ function gpuPick(ev) {
 function idFromObject(obj) {
   var ret = obj;
   while (ret) {
-    if (ret.type === 'Group') {
+    if (ret.parent.type === 'Scene') {
       return ret.id;
     } else {
       ret = ret.parent;
