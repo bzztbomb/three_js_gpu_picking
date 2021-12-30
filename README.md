@@ -58,6 +58,6 @@ If you have an object that requires a custom material for picking (due to vertex
 
 ## Authors / Thanks
 
-This library was developed at [Torch](https://torch.app) by [Brian Richardson](https://github.com/bzztbomb/) with bugfixes from [Josh Faust](https://github.com/jfaust).  Big thanks to [Torch](https://torch.app) for allowing us to release this library!
+This library was developed at [Torch](https://torch.app) by [Brian Richardson](https://github.com/bzztbomb/) with bugfixes from [Josh Faust](https://github.com/jfaust) and [Benny Lichtner](https://github.com/bennlich).  Big thanks to [Torch](https://torch.app) for allowing us to release this library!
 
 The [dancer model](https://sketchfab.com/3d-models/breakdanceanimation--0b5ac21a30e34c2f8011d57d9e017295) is by [12626](https://sketchfab.com/12626) used by CC Attribution License.
